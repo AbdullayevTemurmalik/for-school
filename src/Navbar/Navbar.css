@@ -1,0 +1,218 @@
+/* Umumiy reset va font sozlamalari */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f5f7;
+}
+
+/* Navbar uslublari */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+  color: gray;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo img {
+  height: 100px;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar nav ul li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navbar nav ul li:hover {
+  color: #ff6b6b;
+}
+
+.navbar .login button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff6b6b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.navbar .login button:hover {
+  background-color: #ff4757;
+}
+
+/* Navbar uchun media so'rovlar (Responsive) */
+
+/* Planshetlar (768px dan kichik) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .navbar .logo img {
+    height: 80px;
+  }
+
+  .navbar nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+  }
+
+  .navbar .login {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar .login button {
+    width: 80%;
+  }
+}
+
+/* Kichik mobil telefonlar (480px dan kichik) */
+@media (max-width: 480px) {
+  .navbar nav ul {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .navbar .login button {
+    width: 90%;
+    padding: 10px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 50, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal box */
+.modal {
+  background-color: #fff;
+  padding: 35px 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #1e1e2f;
+}
+
+.modal input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.modal input:focus {
+  border-color: #ff6b6b;
+}
+
+/* Password field */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+  font-size: 18px;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+/* Modal tugmalari */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.login-btn {
+  flex: 1;
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #0f78d1;
+}
+
+.cancel-btn {
+  flex: 1;
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #b3b3b3;
+}
+
+/* Modal uchun media so'rovlar (Responsive) */
+@media (max-width: 480px) {
+  .modal {
+    padding: 25px 20px;
+  }
+
+  .modal h2 {
+    font-size: 20px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+}
