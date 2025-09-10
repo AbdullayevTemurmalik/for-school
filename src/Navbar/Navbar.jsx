@@ -4,20 +4,52 @@ import image from "../assets/image.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [className, setClassName] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // yangi state
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false); // Sign In uchun yangi state
+
+  const [loginFirstName, setLoginFirstName] = useState("");
+  const [loginLastName, setLoginLastName] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginClassName, setLoginClassName] = useState("");
+
+  const [signInFirstName, setSignInFirstName] = useState("");
+  const [signInLastName, setSignInLastName] = useState("");
+  const [signInEmail, setSignInEmail] = useState(""); // Sign In uchun email
+  const [signInPassword, setSignInPassword] = useState("");
+  const [signInConfirmPassword, setSignInConfirmPassword] = useState(""); // Parolni tasdiqlash
+
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showSignInPassword, setShowSignInPassword] = useState(false);
 
   const handleLogin = () => {
-    if (firstName && lastName && password && className) {
+    if (loginFirstName && loginLastName && loginPassword && loginClassName) {
       alert(
-        `Foydalanuvchi ma'lumotlari:\nIsm: ${firstName}\nFamiliya: ${lastName}\nParol: ${password}\nSinf: ${className}`
+        `Foydalanuvchi ma'lumotlari:\nIsm: ${loginFirstName}\nFamiliya: ${loginLastName}\nParol: ${loginPassword}\nSinf: ${loginClassName}`
       );
-      setIsModalOpen(false);
-      setShowPassword(false); // modal yopilganda passwordni yashirish
+      setIsLoginModalOpen(false);
+      setShowLoginPassword(false);
+    } else {
+      alert("Iltimos, barcha maydonlarni to'ldiring!");
+    }
+  };
+
+  const handleSignIn = () => {
+    if (
+      signInFirstName &&
+      signInLastName &&
+      signInEmail &&
+      signInPassword &&
+      signInConfirmPassword
+    ) {
+      if (signInPassword !== signInConfirmPassword) {
+        alert("Parollar mos kelmadi. Iltimos, qayta kiriting.");
+        return;
+      }
+      alert(
+        `Ro'yxatdan o'tish ma'lumotlari:\nIsm: ${signInFirstName}\nFamiliya: ${signInLastName}\nEmail: ${signInEmail}\nParol: ${signInPassword}`
+      );
+      setIsSignInModalOpen(false);
+      setShowSignInPassword(false);
     } else {
       alert("Iltimos, barcha maydonlarni to'ldiring!");
     }
@@ -38,48 +70,51 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        <div className="login">
-          <button onClick={() => setIsModalOpen(true)}>Log In</button>
+        <div className="login-buttons">
+          <button onClick={() => setIsLoginModalOpen(true)}>Log In</button>
+          <button onClick={() => setIsSignInModalOpen(true)}>
+            Sign In
+          </button>{" "}
+          {/* Sign In tugmasi */}
         </div>
       </div>
 
-      {/* Modal */}
-      {isModalOpen && (
+      {/* Log In Modal */}
+      {isLoginModalOpen && (
         <div className="modal-overlay">
           <div className="modal">
             <h2>Log In</h2>
             <input
               type="text"
               placeholder="Ismingiz"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={loginFirstName}
+              onChange={(e) => setLoginFirstName(e.target.value)}
             />
             <input
               type="text"
               placeholder="Familiyangiz"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={loginLastName}
+              onChange={(e) => setLoginLastName(e.target.value)}
             />
-            {/* Password wrapper */}
             <div className="password-wrapper">
               <input
-                type={showPassword ? "text" : "password"}
+                type={showLoginPassword ? "text" : "password"}
                 placeholder="Parol"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
               />
               <span
                 className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowLoginPassword(!showLoginPassword)}
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showLoginPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
             <input
               type="text"
               placeholder="Sinfingiz"
-              value={className}
-              onChange={(e) => setClassName(e.target.value)}
+              value={loginClassName}
+              onChange={(e) => setLoginClassName(e.target.value)}
             />
             <div className="modal-buttons">
               <button className="login-btn" onClick={handleLogin}>
@@ -87,7 +122,65 @@ const Navbar = () => {
               </button>
               <button
                 className="cancel-btn"
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setIsLoginModalOpen(false)}
+              >
+                Bekor qilish
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sign In Modal (Yangi modal) */}
+      {isSignInModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Ro'yxatdan o'tish</h2>
+            <input
+              type="text"
+              placeholder="Ismingiz"
+              value={signInFirstName}
+              onChange={(e) => setSignInFirstName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Familiyangiz"
+              value={signInLastName}
+              onChange={(e) => setSignInLastName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Elektron pochta"
+              value={signInEmail}
+              onChange={(e) => setSignInEmail(e.target.value)}
+            />
+            <div className="password-wrapper">
+              <input
+                type={showSignInPassword ? "text" : "password"}
+                placeholder="Parol"
+                value={signInPassword}
+                onChange={(e) => setSignInPassword(e.target.value)}
+              />
+              <span
+                className="password-toggle"
+                onClick={() => setShowSignInPassword(!showSignInPassword)}
+              >
+                {showSignInPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            <input
+              type="password"
+              placeholder="Parolni tasdiqlash"
+              value={signInConfirmPassword}
+              onChange={(e) => setSignInConfirmPassword(e.target.value)}
+            />
+            <div className="modal-buttons">
+              <button className="login-btn" onClick={handleSignIn}>
+                Ro'yxatdan o'tish
+              </button>
+              <button
+                className="cancel-btn"
+                onClick={() => setIsSignInModalOpen(false)}
               >
                 Bekor qilish
               </button>

@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 100%;
   overflow: hidden;
 }
@@ -22,7 +22,7 @@
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.6));
 }
 
 .banner-content {
@@ -55,7 +55,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: 0.3s;
 }

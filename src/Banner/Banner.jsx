@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./Banner.css";
 
+// Rasmlarni to'g'ri import qilamiz
+import bannerImage1 from "./Images/image1.jpg";
+import bannerImage2 from "./Images/image2.jpg";
+import bannerImage3 from "./Images/image3.jpg";
+
 const Banner = () => {
   const slides = [
     {
-      src: "",
+      src: bannerImage1,
       title: "Namangan 3-Maktab",
       subtitle: "Kelajak sari birgalikda",
     },
     {
-      src: "",
+      src: bannerImage2,
       title: "O‘quvchilarimiz",
       subtitle: "Bilim va fidoyilik",
     },
     {
-      src: "",
+      src: bannerImage3,
       title: "Faoliyat",
       subtitle: "Sport va san'at",
     },

@@ -40,7 +40,14 @@ body {
   color: #ff6b6b;
 }
 
-.navbar .login button {
+/* Login va Sign In tugmalari uchun yangi uslub */
+.login-buttons {
+  display: flex;
+  gap: 10px; /* Tugmalar orasidagi bo'sh joy */
+}
+
+/* Tugmalarning asosiy uslublari */
+.login-buttons button {
   padding: 8px 20px;
   border: none;
   border-radius: 6px;
@@ -51,8 +58,8 @@ body {
   transition: background 0.3s;
 }
 
-.navbar .login button:hover {
-  background-color: blue ;
+.login-buttons button:hover {
+  background-color: blue;
 }
 
 /* Navbar uchun media so'rovlar (Responsive) */
@@ -75,13 +82,13 @@ body {
     margin: 15px 0;
   }
 
-  .navbar .login {
+  .login-buttons {
     width: 100%;
-    text-align: center;
+    justify-content: center;
   }
 
-  .navbar .login button {
-    width: 80%;
+  .login-buttons button {
+    width: 45%; /* Ikkita tugma uchun moslik */
   }
 }
 
@@ -92,12 +99,18 @@ body {
     font-size: 14px;
   }
 
-  .navbar .login button {
+  .login-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-buttons button {
     width: 90%;
     padding: 10px;
   }
 }
 
+/* Modal uslublari */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -140,7 +153,7 @@ body {
 }
 
 .modal input:focus {
-  border-color: #ff6b6b;
+  border-color: #1e90ff;
 }
 
 /* Password field */
