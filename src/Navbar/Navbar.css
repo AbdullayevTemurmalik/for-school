@@ -44,7 +44,7 @@ body {
   padding: 8px 20px;
   border: none;
   border-radius: 6px;
-  background-color: #ff6b6b;
+  background-color: rgb(99, 99, 227);
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -52,7 +52,7 @@ body {
 }
 
 .navbar .login button:hover {
-  background-color: #ff4757;
+  background-color: blue ;
 }
 
 /* Navbar uchun media so'rovlar (Responsive) */

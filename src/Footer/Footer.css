@@ -1,0 +1,142 @@
+/* Footer.css */
+.footer {
+  background-color: rgb(99, 99, 227);
+  color: white;
+  padding: 40px 20px 10px;
+  margin-top: 60px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo h2 {
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #f1c40f;
+}
+
+.footer-logo p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  margin-bottom: 10px;
+  color: #f1c40f;
+  font-size: 18px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+  padding-left: 5px;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.footer-bottom p {
+  color: #ccc;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* 📱 Telefonlar uchun */
+@media (max-width: 576px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-logo h2 {
+    font-size: 20px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 16px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+
+  .footer-contact p {
+    font-size: 13px;
+  }
+}
+
+/* 📱📲 Kichik planshetlar (576px - 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-logo h2 {
+    font-size: 21px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 17px;
+  }
+}
+
+/* 💻 O‘rta ekranlar (768px - 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .footer-top {
+    gap: 25px;
+  }
+
+  .footer-logo h2 {
+    font-size: 22px;
+  }
+}
+
+/* 🖥️ Katta ekranlar (992px dan katta) */
+@media (min-width: 993px) {
+  .footer-top {
+    gap: 40px;
+  }
+}
+
+.falocation {
+  font-size: 17px;
+  color: #f1c40f;
+}
