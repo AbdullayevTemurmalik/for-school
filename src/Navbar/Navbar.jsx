@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import "./Navbar.css"; // Sening Navbar CSS
+import "./Navbar.css";
 import image from "../assets/image.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
+import { IoIosExit } from "react-icons/io";
 
 const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false); // Sign In uchun yangi state
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
 
   const [loginFirstName, setLoginFirstName] = useState("");
   const [loginLastName, setLoginLastName] = useState("");
@@ -14,12 +16,13 @@ const Navbar = () => {
 
   const [signInFirstName, setSignInFirstName] = useState("");
   const [signInLastName, setSignInLastName] = useState("");
-  const [signInEmail, setSignInEmail] = useState(""); // Sign In uchun email
+  const [signInEmail, setSignInEmail] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
-  const [signInConfirmPassword, setSignInConfirmPassword] = useState(""); // Parolni tasdiqlash
+  const [signInConfirmPassword, setSignInConfirmPassword] = useState("");
 
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showSignInPassword, setShowSignInPassword] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogin = () => {
     if (loginFirstName && loginLastName && loginPassword && loginClassName) {
@@ -61,25 +64,29 @@ const Navbar = () => {
         <div className="logo">
           <img src={image} alt="logo" />
         </div>
-        <nav>
+        <nav className={`nav-links ${isMenuOpen ? "open" : ""}`}>
           <ul>
             <li>Bosh sahifa</li>
             <li>Oquvchilar va Oqituvchilar</li>
             <li>Biz haqimizda</li>
             <li>Aloqa</li>
           </ul>
+          <div className="login-buttons-mobile">
+            <button onClick={() => setIsLoginModalOpen(true)}>Log In</button>
+            {/* 👇 "Sign In" tugmasi o'chirildi */}
+          </div>
         </nav>
-
-        <div className="login-buttons">
+        <div className="login-buttons-desktop">
           <button onClick={() => setIsLoginModalOpen(true)}>Log In</button>
-          <button onClick={() => setIsSignInModalOpen(true)}>
-            Sign In
-          </button>{" "}
-          {/* Sign In tugmasi */}
+          {/* 👇 "Sign In" tugmasi o'chirildi */}
         </div>
+        <button
+          className={`menu-icon ${isMenuOpen ? "open" : ""}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <IoIosExit /> : <IoMdMenu />}
+        </button>
       </div>
-
-      {/* Log In Modal */}
       {isLoginModalOpen && (
         <div className="modal-overlay">
           <div className="modal">
@@ -130,8 +137,6 @@ const Navbar = () => {
           </div>
         </div>
       )}
-
-      {/* Sign In Modal (Yangi modal) */}
       {isSignInModalOpen && (
         <div className="modal-overlay">
           <div className="modal">

@@ -25,29 +25,30 @@ body {
   height: 100px;
 }
 
-.navbar nav ul {
+/* Navigatsiya menyusi */
+.nav-links ul {
   list-style: none;
   display: flex;
   gap: 25px;
+  margin: 0;
 }
 
-.navbar nav ul li {
+.nav-links ul li {
   cursor: pointer;
   transition: color 0.3s;
 }
 
-.navbar nav ul li:hover {
+.nav-links ul li:hover {
   color: #ff6b6b;
 }
 
-/* Login va Sign In tugmalari uchun yangi uslub */
-.login-buttons {
+/* Desktop uchun login tugmalari */
+.login-buttons-desktop {
   display: flex;
-  gap: 10px; /* Tugmalar orasidagi bo'sh joy */
+  gap: 10px;
 }
 
-/* Tugmalarning asosiy uslublari */
-.login-buttons button {
+.login-buttons-desktop button {
   padding: 8px 20px;
   border: none;
   border-radius: 6px;
@@ -58,59 +59,123 @@ body {
   transition: background 0.3s;
 }
 
-.login-buttons button:hover {
+.login-buttons-desktop button:hover {
   background-color: blue;
 }
 
-/* Navbar uchun media so'rovlar (Responsive) */
+/* Menyuni ochish/yopish tugmasi (standart holatda yashirin) */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(99, 99, 227);
+}
 
-/* Planshetlar (768px dan kichik) */
+/* Mobil menyu ichidagi login tugmalari (standart holatda yashirin) */
+.login-buttons-mobile {
+  display: none;
+}
+
+/* Planshetlar va mobil qurilmalar uchun (768px dan kichik) */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
     padding: 15px 20px;
+    position: relative;
+    justify-content: space-between;
   }
 
   .navbar .logo img {
     height: 80px;
   }
 
-  .navbar nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 15px 0;
-  }
-
-  .login-buttons {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .login-buttons button {
-    width: 45%; /* Ikkita tugma uchun moslik */
-  }
-}
-
-/* Kichik mobil telefonlar (480px dan kichik) */
-@media (max-width: 480px) {
-  .navbar nav ul {
-    gap: 10px;
-    font-size: 14px;
-  }
-
-  .login-buttons {
+  /* Menyuni o'ng tomondan ochish uchun stillar */
+  .nav-links {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
   }
 
-  .login-buttons button {
-    width: 90%;
-    padding: 10px;
+  /* Menyuning ochiq holati */
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+    padding-top: 50px;
+  }
+
+  .nav-links ul li {
+    font-size: 18px;
+  }
+
+  .nav-links ul li:hover {
+    color: rgb(99, 99, 227);
+  }
+
+  /* Desktop login tugmalarini yashirish */
+  .login-buttons-desktop {
+    display: none;
+  }
+
+  /* Mobil login tugmalarini ko'rsatish */
+  .login-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .login-buttons-mobile button {
+    width: 100%;
+    /* Mobil menyu ichidagi tugmalar uchun stillar */
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .login-buttons-mobile button:hover {
+    background-color: rgb(99, 99, 227);
+    color: white;
+  }
+
+  /* Menyuni ochish tugmasini ko'rsatish */
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    font-size: 2.5rem; /* Icon kattaligi uchun */
+  }
+
+  /* Menyu ochilganda iconni stilini o'zgartirish */
+  .menu-icon.open {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1000;
   }
 }
 
-/* Modal uslublari */
+/* Modal uslublari (o'zgarishsiz qoldirildi) */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -124,7 +189,6 @@ body {
   z-index: 1000;
 }
 
-/* Modal box */
 .modal {
   background-color: #fff;
   padding: 35px 30px;
@@ -156,7 +220,6 @@ body {
   border-color: #1e90ff;
 }
 
-/* Password field */
 .password-wrapper {
   position: relative;
 }
@@ -175,7 +238,6 @@ body {
   padding-right: 40px;
 }
 
-/* Modal tugmalari */
 .modal-buttons {
   display: flex;
   justify-content: space-between;
@@ -215,7 +277,6 @@ body {
   background-color: #b3b3b3;
 }
 
-/* Modal uchun media so'rovlar (Responsive) */
 @media (max-width: 480px) {
   .modal {
     padding: 25px 20px;
